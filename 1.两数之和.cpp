@@ -9,7 +9,8 @@
 // @lc code=start
 class Solution {
 public:
-    vector<int> twoSum(vector<int>& nums, int target) {
+    // cost: 8ms
+    vector<int> twoSum0(vector<int>& nums, int target) {
         // 无序，哈希
         unordered_map<int, int> hashMap;
         // 一次循环，顺序读取，可避免 [3, 3]\n6
@@ -22,6 +23,20 @@ public:
                 return {it->second, i};
             }
             hashMap[nums[i]] = i;
+        }
+        return {};
+    }
+
+    // cost: 4ms
+    vector<int> twoSum(vector<int>& nums, int target) {
+        map<int, int> kv;
+        for (int i = 0; i < nums.size(); i++)
+        {
+            if (kv.count(target - nums[i]) > 0)
+            {
+                return {kv[target - nums[i]], i};
+            }
+            kv[nums[i]] = i;
         }
         return {};
     }
