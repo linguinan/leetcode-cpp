@@ -1,0 +1,2 @@
+==42==ERROR: AddressSanitizer: heap-buffer-overflow on address 
+如上是存在内存非法访问，一般是数组越界了，检查下是否哪块逻辑没正确执行
