@@ -3,42 +3,30 @@
  *
  * [703] 数据流中的第 K 大元素
  */
+
 #include "headers.h"
 
 // @lc code=start
 class KthLargest {
 private:
+    priority_queue<int, vector<int>, greater<int>> q;
     int maxK;
-    vector<int> vec;
-
 public:
     KthLargest(int k, vector<int>& nums) {
-        maxK = k - 1;
-        // 预排序
-        if (nums.size() > 0)
+        this->maxK = k;
+        for(auto& x : nums)
         {
-            sort(nums.begin(), nums.end(), greater<int>());
+            add(x);
         }
-        vec = nums;
     }
     
     int add(int val) {
-        // 处理初始空数组到情况
-        if (vec.size() > 0)
+        q.push(val);
+        if (q.size() > maxK)
         {
-            // 二分法插入到目标位
-            for (int i = 0; i < vec.size(); i++)
-            {
-                if (vec[i] > val)
-                {
-                    continue;
-                }
-                vec.insert(vec.begin() + i, val);
-                return vec[maxK];
-            }
+            q.pop();
         }
-        vec.push_back(val);
-        return vec[maxK];
+        return q.top();
     }
 };
 
