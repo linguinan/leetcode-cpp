@@ -72,6 +72,6 @@
     // "C_Cpp.default.cppStandard": "c++11"
     "clang.cxxflags": ["-std=c++14"],
     "code-runner.executorMap": {
-        "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt -std=c++11 && $dir$fileNameWithoutExt"
+        "cpp": "cd $dir && g++ $fileName -o $dirbuild/$fileNameWithoutExt -std=c++11 && $dirbuild/$fileNameWithoutExt"
     },
 }

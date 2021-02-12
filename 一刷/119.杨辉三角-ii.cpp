@@ -3,7 +3,7 @@
  *
  * [119] 杨辉三角 II
  */
-#include "headers.h"
+#include "../headers.h"
 
 // @lc code=start
 class Solution {
@@ -30,12 +30,12 @@ public:
     }
 };
 
-// int main(int argc, char const *argv[])
-// {
-//     Solution st;
-//     st.getRow(3);
-//     return 0;
-// }
+int main(int argc, char const *argv[])
+{
+    Solution st;
+    st.getRow(3);
+    return 0;
+}
 
 // @lc code=end
 
