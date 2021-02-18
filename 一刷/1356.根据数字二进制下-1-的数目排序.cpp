@@ -7,21 +7,32 @@
 
 // @lc code=start
 class Solution {
-public:
-    // 根据递推公式做预处理：bit[i]=bit[i>>1]+(i&1)
-    // cost (16 ms)
-    vector<int> sortByBits(vector<int>& arr) {
-        vector<int> bits = vector<int>(10001);
-        for (int i = 0; i < 10001; i++)
+private:
+    int hammingWeight(int n)
+    {
+        int cnt = 0;
+        while (n > 0)
         {
-            bits[i] = bits[i >> 1] + (i & 1);
+            cnt++;
+            n &= (n - 1);
+        }
+        return cnt;
+    }
+
+public:
+    // 暴力解，耗时(48 ms)
+    vector<int> sortByBits(vector<int>& arr) {
+        map<int, int> dic;
+        for(int n : arr)
+        {
+            dic[n] = hammingWeight(n);
         }
         sort(arr.begin(), arr.end(), [&](int a, int b) {
-            if (bits[a] < bits[b])
+            if (dic[a] < dic[b])
             {
                 return true;
             }
-            if (bits[a] > bits[b])
+            if (dic[a] > dic[b])
             {
                 return false;
             }
