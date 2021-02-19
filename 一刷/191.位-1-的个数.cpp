@@ -8,17 +8,14 @@
 // @lc code=start
 class Solution {
 public:
-    // & 1 = 1 则低位为1
-    // 右进去掉一位
+    // 数与减一相与清掉低位的1
+    // & 进制位都为1才得1
     int hammingWeight(uint32_t n) {
         int cnt = 0;
         while (n > 0)
         {
-            if ((n & 1) == 1)
-            {
-                cnt++;
-            }
-            n = n >> 1;
+            cnt++;
+            n &= (n - 1);
         }
         return cnt;
     }
