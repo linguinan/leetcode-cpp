@@ -8,22 +8,21 @@
 // @lc code=start
 class NumArray {
 private:
-    vector<int> sums;
+    vector<int> nums;
 
 public:
-    // 前缀和 Cost : 20 ms
+    // 暴力解，cost : 388 ms
     NumArray(vector<int>& nums) {
-        // 预处理
-        int n = nums.size();
-        sums.resize(n + 1);
-        for (int i = 0; i < n; i++)
-        {
-            sums[i + 1] = sums[i] + nums[i];
-        }
+        this->nums = nums;
     }
     
     int sumRange(int i, int j) {
-        return sums[j + 1] - sums[i];
+        int res = 0;
+        for (int k = i; k <= j; k++)
+        {
+            res += this->nums[k];
+        }
+        return res;
     }
 };
 
